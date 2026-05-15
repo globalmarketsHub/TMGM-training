@@ -16,22 +16,33 @@ export function LoginForm() {
     setLoading(true);
     setError("");
 
-    const response = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
-    });
+    try {
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 15000);
 
-    const payload = await response.json();
-    setLoading(false);
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+        signal: controller.signal
+      });
 
-    if (!response.ok) {
+      window.clearTimeout(timeout);
+
+      const payload = await response.json().catch(() => ({}));
+      setLoading(false);
+
+      if (!response.ok) {
       setError(payload.error ?? "登录失败，请检查账号状态。");
-      return;
+        return;
     }
 
-    router.replace(payload.role === "ADMIN" ? "/admin" : "/training");
-    router.refresh();
+      router.replace(payload.role === "ADMIN" ? "/admin" : "/training");
+      router.refresh();
+    } catch {
+      setLoading(false);
+      setError("登录请求超时或网络异常，请稍后重试。");
+    }
   }
 
   return (

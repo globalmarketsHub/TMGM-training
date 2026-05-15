@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { createSessionToken, setSessionCookie } from "@/lib/auth";
+import { apiError, createSessionToken, setSessionCookie } from "@/lib/auth";
 import { verifyPassword } from "@/lib/password";
 import { loginSchema } from "@/lib/validators";
 
 export async function POST(request: Request) {
+  try {
   const body = await request.json().catch(() => null);
   const parsed = loginSchema.safeParse(body);
 
@@ -50,4 +51,7 @@ export async function POST(request: Request) {
   });
   setSessionCookie(response, token);
   return response;
+  } catch (error) {
+    return apiError(error);
+  }
 }
