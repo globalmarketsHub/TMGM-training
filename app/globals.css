@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: #03142f;
+  --foreground: #eff6ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.fintech-bg {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(33, 199, 217, 0.16), transparent 26%),
+    radial-gradient(circle at 82% 4%, rgba(214, 177, 93, 0.16), transparent 22%),
+    linear-gradient(135deg, #03142f 0%, #06285d 42%, #034694 100%);
+}
+
+.fintech-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 86%);
+}
+
+.market-lines {
+  position: absolute;
+  inset: auto -10% 0 -10%;
+  height: 42%;
+  opacity: 0.44;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, transparent 0 9%, rgba(55, 212, 137, 0.55) 9.2% 9.7%, transparent 10% 18%, rgba(33, 199, 217, 0.44) 18.2% 18.8%, transparent 19%),
+    linear-gradient(25deg, transparent 0 22%, rgba(214, 177, 93, 0.36) 22.2% 22.7%, transparent 23% 40%, rgba(255, 255, 255, 0.28) 40.2% 40.7%, transparent 41%);
+  filter: blur(0.2px);
+}
+
+.glass-panel {
+  border: 1px solid rgba(191, 219, 254, 0.16);
+  background: rgba(7, 27, 63, 0.78);
+  box-shadow: 0 24px 80px rgba(1, 15, 40, 0.34);
+  backdrop-filter: blur(18px);
+}
+
+.surface {
+  border: 1px solid rgba(191, 219, 254, 0.12);
+  background: rgba(7, 27, 63, 0.74);
+}
+
+.input {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(191, 219, 254, 0.18);
+  background: rgba(3, 20, 47, 0.72);
+  padding: 0.78rem 0.9rem;
+  color: #eff6ff;
+  outline: none;
+}
+
+.input:focus {
+  border-color: rgba(33, 199, 217, 0.8);
+  box-shadow: 0 0 0 3px rgba(33, 199, 217, 0.14);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(33, 199, 217, 0.55);
+  background: linear-gradient(135deg, #0861c7, #034694 58%, #09234f);
+  color: white;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  border-color: rgba(214, 177, 93, 0.72);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(191, 219, 254, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  color: #dbeafe;
+  padding: 0.72rem 1rem;
+  font-weight: 700;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(191, 219, 254, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.26rem 0.62rem;
+  font-size: 0.75rem;
+  color: #cfe8ff;
+}
+
+.table-shell {
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(191, 219, 254, 0.12);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.data-table th {
+  background: rgba(3, 20, 47, 0.72);
+  color: #a9c8ee;
+  font-weight: 700;
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  border-bottom: 1px solid rgba(191, 219, 254, 0.1);
+  padding: 0.86rem 1rem;
+  vertical-align: top;
+}
+
+.data-table tr:last-child td {
+  border-bottom: 0;
+}
