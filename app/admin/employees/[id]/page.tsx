@@ -4,6 +4,8 @@ import { StatusPill } from "@/components/ui/StatusPill";
 import { formatDateTime, formatDuration } from "@/lib/format";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 type PageProps = {
   params: Promise<{ id: string }>;
 };

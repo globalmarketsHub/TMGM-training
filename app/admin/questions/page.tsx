@@ -1,6 +1,8 @@
 import { QuestionManager } from "@/components/admin/QuestionManager";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export default async function QuestionsPage() {
   const questions = await prisma.examQuestion.findMany({
     orderBy: { sortOrder: "asc" }

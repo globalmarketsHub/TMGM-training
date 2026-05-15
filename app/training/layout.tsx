@@ -1,6 +1,8 @@
 import { AppShell } from "@/components/layout/AppShell";
 import { requirePageEmployee } from "@/lib/auth";
 
+export const dynamic = "force-dynamic";
+
 export default async function TrainingLayout({ children }: { children: React.ReactNode }) {
   const { user, employee } = await requirePageEmployee();
 

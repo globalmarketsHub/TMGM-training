@@ -5,6 +5,8 @@ import { StatusPill } from "@/components/ui/StatusPill";
 import { formatDateTime } from "@/lib/format";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export default async function EmployeesPage() {
   const employees = await prisma.employee.findMany({
     orderBy: { createdAt: "desc" },

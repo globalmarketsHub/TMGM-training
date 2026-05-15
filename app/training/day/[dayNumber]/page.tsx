@@ -8,6 +8,8 @@ import { StatusPill } from "@/components/ui/StatusPill";
 import { requirePageEmployee } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 type PageProps = {
   params: Promise<{ dayNumber: string }>;
 };

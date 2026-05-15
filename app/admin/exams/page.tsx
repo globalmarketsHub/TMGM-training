@@ -2,6 +2,8 @@ import Link from "next/link";
 import { formatDateTime } from "@/lib/format";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminExamsPage() {
   const results = await prisma.examResult.findMany({
     orderBy: { submittedAt: "desc" },

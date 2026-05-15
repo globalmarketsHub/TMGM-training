@@ -5,6 +5,8 @@ import { StatusPill } from "@/components/ui/StatusPill";
 import { formatDateTime, formatDuration } from "@/lib/format";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminDashboardPage() {
   const [employees, progress, timeAggregate, recentExams] = await Promise.all([
     prisma.employee.findMany({

@@ -1,6 +1,8 @@
 import { ContentManager } from "@/components/admin/ContentManager";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export default async function ContentPage() {
   const days = await prisma.trainingDay.findMany({
     orderBy: { sortOrder: "asc" }
