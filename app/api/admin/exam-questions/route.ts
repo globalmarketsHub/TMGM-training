@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Prisma } from "@prisma/client";
 import { apiError, requireAdmin } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { examQuestionSchema } from "@/lib/validators";
@@ -27,8 +28,12 @@ export async function POST(request: Request) {
 
     const question = await prisma.examQuestion.create({
       data: {
-        ...parsed.data,
-        options: parsed.data.options ?? undefined,
+        type: parsed.data.type,
+        prompt: parsed.data.prompt,
+        score: parsed.data.score,
+        sortOrder: parsed.data.sortOrder,
+        isActive: parsed.data.isActive,
+        options: parsed.data.options === null || parsed.data.options === undefined ? Prisma.DbNull : parsed.data.options,
         correctAnswer: parsed.data.correctAnswer ?? null
       }
     });
